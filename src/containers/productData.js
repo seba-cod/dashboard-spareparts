@@ -15,9 +15,6 @@ export default function ProductData() {
 
     return (
         <React.Fragment>
-            <h2>ACA</h2>
-            {/* <button onClick='(() => { setProducts() })' />
-            {products} */}
         </React.Fragment>
     )
 }

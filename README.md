@@ -1,6 +1,6 @@
 # Dashboard React DH
 
-## This is a project made with React for educational purpouses
+### This is a project made with React for educational purpouses
 
 ## Getting started
 
