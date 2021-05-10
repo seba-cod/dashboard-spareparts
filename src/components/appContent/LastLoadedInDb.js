@@ -1,40 +1,50 @@
 import React, { useState, useEffect } from "react";
-// import imagenFondo from "../assets/images/mandalorian.jpg";
 
-const API_GET_PRODUCT_BY_PK = 'http://localhost:3010/api/products/2'
+const API_GET_LASTPRODUCT_IN_DB = 'http://localhost:3010/api/product/last'
 
 export default function LastLoadedInDb(props) {
 
-  let [product, setProduct] = useState([0])
+  const [product, setProduct] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect( () => {
-    fetch(API_GET_PRODUCT_BY_PK)
+    fetch(API_GET_LASTPRODUCT_IN_DB)
       .then(res => res.json())
-      .then(data => { setProduct(data.productData) })
-  }, [] )
+      .then(
+        (data) => {
+          setProduct(data.data);
+          setUser(data.data.userOwner);
+        })
+  },[])
+  // Al setear un estado como un array vacio significa que useEffect se va a correr una sola vez como cuando usabamos componentDidMount()
+  // Manejar errores de esta forma en vez de dentro del catch nos permite identificar un error en la DB de uno en un componente
 
 
-  console.log(product)
   return (
     <div className="col-lg-6 mb-4">
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h5 className="m-0 font-weight-bold text-gray-800">
-            {product.name}
+            Último producto publicado
           </h5>
         </div>
         <div className="card-body">
           <div className="text-center">
             <img
               className="img-fluid px-3 px-sm-4 mt-3 mb-4"
-              style={{ width: 40 + "rem" }}
+              style={{ width: 25 + "rem" }}
               src={`${product.image}`}
-              alt={`${props.stats.altImage}`}
+              alt={`imagen del producto`}
             />
           </div>
-          <p>{product.description}</p>
-          <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">
-            View movie detail
+          <p>
+            <span>Nombre del producto: {product.name} </span> <br/>
+            <span>Descripción: {product.description} </span> <br/>
+         
+            <span> Valor: <strong>${product.price}</strong> | Producto vendido por Usuario: <strong>{user.user_name}</strong> </span>
+          </p>
+          <a className="btn btn-primary" target="_blank" rel="noreferrer" href={product.link}>
+            Ver detalle
           </a>
         </div>
       </div>

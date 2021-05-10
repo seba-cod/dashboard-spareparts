@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Link } from 'react-router-dom';
-import NavItem from './NavItem';
-import navdata from './NavData';
+import NavItems from './NavItem';
+
 
 function SideBar() {
   return (
@@ -33,9 +33,7 @@ function SideBar() {
         <hr className="sidebar-divider" />
         <div className="sidebar-heading">IR A</div>
 
-        <NavItem>
-          {navdata}
-        </NavItem>
+        <NavItems/>
 
         <hr className="sidebar-divider d-none d-md-block" />
 

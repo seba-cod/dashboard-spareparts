@@ -1,15 +1,18 @@
-const navdata = [
+const navData = [
     {
+        link: '/',
         class: 'fas fa-fw fa-folder',
         name: 'Miscelaneo'
     },
     {
-        class: 'fas fa-fw fa-table',
+        link: '/',
+        class: 'fas fa-fw fa-table active',
         name: 'Usuarios'
     },
     {
+        link: '/',
         class: 'fas fa-fw fa-chart-area',     
         name: 'Productos'
     }
 ]
-export default navdata;
+export default navData;

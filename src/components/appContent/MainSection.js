@@ -1,55 +1,46 @@
-import React from "react";
-import ContentRowMovies from "./ContentRowMovies";
+import React, { useState, useEffect } from "react";
+import ContentRowHighlight from "../HighlightCards/ContentRowHighlight";
 import LastLoadedInDb from "./LastLoadedInDb";
-import GenresInDb from "./GenresInDb";
-import mandolarian from "../../assets/images/mandalorian.jpg";
+import CategoriesInDb from "./CategoriesInDb";
+const API_GET_ALL_META_IN_DB = 'http://localhost:3010/api/information'
 
 function MainSection() {
+
+
+  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [orders, setOrders] = useState([]);
+
+  useEffect( () => {
+    fetch(API_GET_ALL_META_IN_DB)
+      .then(res => res.json())
+      .then(
+        (data) => {
+          setProducts(data.totalProductsInDb)
+          setUsers(data.totalUsersInDb)
+          setOrders(data.totalGain)
+        })
+  },[])
+
   const statsRow = [
     {
-      title: "Movies in Data Base",
+      title: "Productos publicados",
       color: "primary",
-      amount: 21,
-      icon: "fa-film",
+      amount: products,
+      icon: "fas fa-luggage-cart",
     },
     {
-      title: "Total awards",
-      color: "success",
-      amount: 79,
-      icon: "fa-award",
-    },
-    {
-      title: "Actors quantity",
-      color: "warning",
-      amount: 49,
+      title: "Usuarios registrados",
+      color: "info",
+      amount: users,
       icon: "fa-user",
     },
-    {},
-  ];
-
-  const statsDb = {
-    title: "Last movie in Data Base",
-    image: `${mandolarian}`,
-    altImage: "Star Wars - Mandalorian",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-    consequatur explicabo officia inventore libero veritatis iure
-    voluptate reiciendis a magnam, vitae, aperiam voluptatum non
-    corporis quae dolorem culpa citationem ratione aperiam voluptatum
-    non corporis ratione aperiam voluptatum quae dolorem culpa ratione
-    aperiam voluptatum?`,
-  };
-
-  const genres = [
-    "Acción",
-    "Animación",
-    "Aventura",
-    "Ciencia Ficción",
-    "Comedia",
-    "Documental",
-    "Drama",
-    "Fantasia",
-    "Infantiles",
-    "Musical",
+    {
+      title: "Ganancias totales",
+      color: "success",
+      amount: `$ ${orders}`,
+      icon: "fa-file-invoice-dollar",
+    }
   ];
 
   return (
@@ -58,10 +49,10 @@ function MainSection() {
         <div className="d-sm-flex aligns-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
         </div>
-        <ContentRowMovies stats={statsRow} />
+        <ContentRowHighlight stats={statsRow} />
         <div className="row">
-          <LastLoadedInDb stats={statsDb} />
-          <GenresInDb stats={genres} />
+          <LastLoadedInDb/>
+          <CategoriesInDb/>
         </div>
       </div>
     </React.Fragment>

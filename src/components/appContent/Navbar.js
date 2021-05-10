@@ -1,6 +1,6 @@
 import React from "react";
 import foto from "../../assets/images/jordan-walke.png";
-
+// Acá tiene que ir la lógica del logueo
 function Navbar() {
   return (
     <React.Fragment>

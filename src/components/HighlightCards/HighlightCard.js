@@ -28,7 +28,6 @@ export default function HighlightCard({title, color, amount, icon}) {
 HighlightCard.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string,
-  amount: PropTypes.number,
   icon: PropTypes.string,
 };
 

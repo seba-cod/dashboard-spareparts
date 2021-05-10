@@ -1,25 +1,23 @@
 import React from 'react'
-
+import navData from './NavData';
 import { Route } from 'react-router-dom';
 
 
-export default function NavItem({children}) {
-    const data = children;
-    console.log(data)
+export default function NavItems() {
+    const data = navData
+
     return (
         <React.Fragment>
-              <li className="nav-item">
-                {data.map( (dat, i) => {
+                {data.map( (navPage, i) => {
                 return (
-                <>
-                    <Route path='/' exact={true} > 
-                        <i className={dat.class}></i>
-                        <span> {dat.name} </span>
+                    <li key={i} className="nav-item">
+                      <Route path={navPage.link} exact={true} > 
+                        <i className={navPage.class}></i>
+                        <span style={{color:'#FFF', fontSize:'0.8rem', cursor:'pointer'}} className='align-middle' > {navPage.name} </span>
                     </ Route >
-                </>
+                    </li>
                 )
                 })}
-              </li>
         </React.Fragment>
         )
 }
