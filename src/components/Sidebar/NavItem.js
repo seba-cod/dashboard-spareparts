@@ -13,7 +13,7 @@ export default function NavItems() {
                     <li key={i} className="nav-item">
                       <Route path={navPage.link} exact={true} > 
                         <i className={navPage.class}></i>
-                        <span style={{color:'#FFF', fontSize:'0.8rem', cursor:'pointer'}} className='align-middle' > {navPage.name} </span>
+                        <span style={{color:'#FFF', fontSize:'0.8rem', cursor:'pointer'}}  className="align-middle" > {navPage.name} </span>
                     </ Route >
                     </li>
                 )
@@ -21,5 +21,3 @@ export default function NavItems() {
         </React.Fragment>
         )
 }
-
-        

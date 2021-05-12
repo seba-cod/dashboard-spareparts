@@ -4,10 +4,12 @@ import TableThead from "./TableThead";
 import TableContent from "./TableContent";
 
 export default function Table(props) {
-  let page = 0;
+  const [page, setPage] = useState(0)
+
   let API_GET_PRODUCTS = `http://localhost:3010/api/products/page/${page}`;
+
   const [products, setProducts] = useState([]);
-  // const [categoryInfo, setCategoryInfo] = useState([]);
+  const [categoryInfo, setCategoryInfo] = useState([]);
   const [meta, setMeta] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function Table(props) {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.productsData.product);
-        // setCategoryInfo(data.productsData.categoryInfo);
+        setCategoryInfo(data.productsData.countProductsByCategory);
         setMeta(data.meta);
       });
   }, []);
@@ -25,7 +27,7 @@ export default function Table(props) {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.productsData.product);
-        // setCategoryInfo(data.productsData.countProductsByCategory);
+        setCategoryInfo(data.productsData.countProductsByCategory);
         setMeta(data.meta);
       });
   }, [page]);
@@ -35,13 +37,9 @@ export default function Table(props) {
     paginate.push(i);
   }
 
-  const buttonPaginate = useRef(null)
-
-  function changePaginate () {
-    page = buttonPaginate.current.value
-    console.log(buttonPaginate.current)
+  function changePaginate (i) {
+    return setPage(i)
   }
-
 
   const thead = ["Producto", "id", "Valor", "Categoria", "Link a la publicación"];
 
@@ -58,7 +56,7 @@ export default function Table(props) {
         {meta.hasPrevious && <i className="fas fa-arrow-left"></i>}
         {paginate.map((pages, i) => {
           return (
-            <button ref={buttonPaginate} onClick={() => changePaginate} value={pages} key={i} className="btn">
+            <button onClick={() => changePaginate(i)} key={i} className="btn">
               <strong>{pages}</strong>
             </button>
           );
