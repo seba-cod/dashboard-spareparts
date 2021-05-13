@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavItems from './NavItem';
 
 
@@ -8,25 +8,24 @@ function SideBar() {
     <React.Fragment>
       <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-          { <Route path='/' exact={true} > 
-            < Link to="/" className="sidebar-brand d-flex align-items-center justify-content-center">
-                <div className="sidebar-brand-icon">
-                  <i className="fas fa-tools"></i>
-                </div>
-                <div className="sidebar-brand-text mx-3">SPARE-PARTS
-                </div>
-              </ Link > 
-          </ Route > }
+          {
+          < Link to="/" className="sidebar-brand d-flex align-items-center justify-content-center">
+            <div className="sidebar-brand-icon">
+              <i className="fas fa-tools"></i>
+            </div>
+              <div className="sidebar-brand-text mx-3">SPARE-PARTS
+            </div>
+          </ Link >
+          }
+
         <hr className="sidebar-divider my-0" />
         <li className="nav-item active">
 
-          { 
-          <Route path='/' exact={true} >
-            <Link to="/" className="nav-link"> 
-                <i className="fas fa-charging-station"></i>
-                <span>SPA Dashboard</span> 
-              </Link>
-          </ Route >
+          {
+          <Link to="/" className="nav-link"> 
+            <i className="fas fa-charging-station"></i>
+            <span>SPA Dashboard</span> 
+          </Link>
           }
         </li>
 

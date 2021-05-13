@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function TableThead(props) {
+export default function TableThead({data}) {
   return (
     <thead className="thead-dark">
       <tr>
-        {props.data.map((thead, i) => {
+        {data.titleColumns.map((thead, i) => {
           return <th key={i}> {thead} </th>;
         })}
       </tr>

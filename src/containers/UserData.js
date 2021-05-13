@@ -2,39 +2,37 @@
 import React, { useState, useEffect } from "react";
 import Table from '../components/table/Table';
 
-export default function ProductData() {
+export default function UserData() {
 
   const [page, setPage] = useState(0)
 
-  let API_GET_PRODUCTS = `http://localhost:3010/api/products/page/${page}`;
+  let API_GET_USERS = `http://localhost:3010/api/users/page/${page}`;
 
-  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
   const [meta, setMeta] = useState([]);
 
   useEffect(() => {
-    fetch(API_GET_PRODUCTS)
+    fetch(API_GET_USERS)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.productsData.product);
+        setUsers(data.userData.product);
         setMeta(data.meta);
       });
-  }, [API_GET_PRODUCTS]);
+  }, [API_GET_USERS]);
 
   useEffect(() => {
-    fetch(API_GET_PRODUCTS)
+    fetch(API_GET_USERS)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.productsData.product);
+        setUsers(data.userData.product);
         setMeta(data.meta);
       });
-  }, [API_GET_PRODUCTS, page]);
+  }, [API_GET_USERS, page]);
 
-  let rows = [];
-  products.map( product => (
-        rows.push(product.name, product.id, product.price, product.category, (<a href={product.detail}><i className="fas fa-external-link-alt"></i></a>))
-    )
-  )
-  
+  const rows = users.map( user => {
+          let userArray = [user.name, user.username, user.id, user.email, (<a href={user.detail}><i className="fas fa-external-link-alt"></i></a>)]
+          return userArray })
+
   let paginate = [];
   for (let i = 1; i <= meta.totalPages; i++) {
     paginate.push(i);
@@ -47,14 +45,14 @@ export default function ProductData() {
   const hasPrevious = meta.hasPrevious;
   const hasNext = meta.hasNext;
   const isLast = meta.isLast;
-  const titleColumns = ["Producto", "id", "Valor", "Categoria", "Link a la publicación"];
+  const titleColumns = ["Nombre completo", "Username", "Id", "email", "Link al Usuario"];
 
     return (
       <div className="container-fluid">
         <div className="d-sm-flex aligns-items-center justify-content-between mb-4">
           <Table data={titleColumns, rows, page, paginate, hasPrevious, hasNext, isLast, changePaginate}/>
         </div>
-      </div>
+    </div>
     )
 }
 

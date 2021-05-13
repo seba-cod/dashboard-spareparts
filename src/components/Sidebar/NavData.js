@@ -5,12 +5,12 @@ const navData = [
         name: 'Miscelaneo'
     },
     {
-        link: '/',
+        link: '/users',
         class: 'fas fa-fw fa-table active',
         name: 'Usuarios'
     },
     {
-        link: '/',
+        link: '/products',
         class: 'fas fa-fw fa-chart-area',     
         name: 'Productos'
     }
