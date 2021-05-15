@@ -14,9 +14,13 @@ function ContentWrapper() {
 
           <Navbar />
           <Switch>
-            <Route path='/' exact={true} component={MainSection}/>
-            <Route path='/products' exact={true} component={ProductData}/>
-            <Route path='/users' exact={true} component={UserData}/>
+            <Route path='/' exact component={MainSection}/>
+            <Route path='/products' exact>
+              <ProductData/>
+            </Route>
+            <Route path='/users' exact>
+              <UserData/>
+            </Route>
           </Switch>
           <Footer />
           
