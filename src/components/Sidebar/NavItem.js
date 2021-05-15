@@ -10,10 +10,10 @@ export default function NavItems() {
         <React.Fragment>
                 {data.map( (navPage, i) => {
                 return (
-                    <li key={i} className="nav-item">
-                      <Link to={navPage.link}> 
+                    <li key={i} className="nav-item col-auto">
+                      <Link to={navPage.link} className="text-decoration-none text-white"> 
                         <i className={navPage.class}></i>
-                        <span style={{color:'#FFF', fontSize:'0.8rem', cursor:'pointer'}}  className="align-middle" > {navPage.name} </span>
+                        <span className="align-middle font-weight-light text-wrap text-wrap" > {navPage.name} </span>
                     </ Link >
                     </li>
                 )

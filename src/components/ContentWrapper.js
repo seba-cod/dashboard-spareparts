@@ -13,15 +13,21 @@ function ContentWrapper() {
         <div id="content">
 
           <Navbar />
+
           <Switch>
+            
             <Route path='/' exact component={MainSection}/>
+
             <Route path='/products' exact>
               <ProductData/>
             </Route>
+            
             <Route path='/users' exact>
               <UserData/>
             </Route>
+
           </Switch>
+
           <Footer />
           
         </div>

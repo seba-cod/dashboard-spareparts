@@ -2,7 +2,7 @@ const navData = [
     {
         link: '/',
         class: 'fas fa-fw fa-folder',
-        name: 'Miscelaneo'
+        name: 'Home'
     },
     {
         link: '/users',

@@ -37,7 +37,7 @@ export default function ProductData() {
     return (
       <React.Fragment>
         <div className="container-fluid">
-          {meta && 
+          {products && meta && 
             <div className="d-sm-flex aligns-items-center justify-content-between mb-4">
               <Table data = {{titleColumns, products, page, meta, changePaginate}}/>
             </div>

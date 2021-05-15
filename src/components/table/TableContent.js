@@ -1,36 +1,35 @@
 import React from "react";
 
-export default function TableContent({products, users}) {  
+export default function TableContent({data}) {  
+ const {users, products} = data;
 
-  let rows = null;
-console.log(users)
-console.log(products)
-  
+let rows = null;
+
+console.log('estos son los Usuarios en Table: ', data)
 if (users) {
   rows = users.map(
     user => {
-        let newArray = [
+        let newUserArray = [
             user.name,
-            user.username,
+            user.user_name,
             user.id,
             user.email,
             user.detail
         ]
-      return newArray;
+      return newUserArray;
     }
   )
-}
-  if (products) {
+} else if (products) {
     rows = products.map(
         product => { 
-            let newArray = [
+            let newProductArray = [
                   product.name, 
                   product.id, 
-                  `$ ${product.price}`, 
+                  product.price, 
                   product.category, 
                   product.detail
             ]
-          return newArray;
+          return newProductArray;
         }
       ) 
   }

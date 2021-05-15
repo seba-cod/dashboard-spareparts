@@ -37,13 +37,12 @@ export default function UserData() {
     return (
       <React.Fragment>
         <div className="container-fluid">
-          {meta && 
+          {users && meta && 
             <div className="d-sm-flex aligns-items-center justify-content-between mb-4">
-              <Table data={{titleColumns, users, page, meta, changePaginate}}/>
+              <Table data = {{titleColumns, users, page, meta, changePaginate}}/>
             </div>
           }
         </div>
       </React.Fragment>
     )
 }
-
